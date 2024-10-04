@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from registration.models import Participant, TeamCaptain, Team
+
 
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,8 +26,15 @@ class TeamSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         participants_data = validated_data.pop('participants')
         captain_data = validated_data.pop('captain')
+
+        # Сначала создаем команду
         team = Team.objects.create(**validated_data)
-        TeamCaptain.objects.create(team=team, **captain_data)
+
+        # Теперь создаем капитана и устанавливаем связь с командой
+        captain = TeamCaptain.objects.create(team=team, **captain_data)
+
+        # Добавляем участников
         for participant_data in participants_data:
             Participant.objects.create(team=team, **participant_data)
+
         return team
