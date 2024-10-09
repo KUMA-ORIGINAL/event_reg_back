@@ -20,7 +20,13 @@ class RegisterTeamView(viewsets.GenericViewSet,
             message = f'Команда {team.name} успешно зарегистрирована.'
             recipient_list = [team.captain.email]
             try:
-                send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, recipient_list)
+                send_mail(
+                    subject,
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    recipient_list,
+                    fail_silently=False
+                )
             except Exception as e:
                 return Response({"detail": "Team registered, but failed to send email."},
                                 status=status.HTTP_201_CREATED)
