@@ -2,10 +2,11 @@ import logging
 
 from django.conf import settings
 from django.core.mail import send_mail
-from rest_framework import viewsets, mixins, status
+from rest_framework import viewsets, mixins, status, generics
 from rest_framework.response import Response
 
 from api.serializers import TeamSerializer
+from registration.models import Team
 
 logger = logging.getLogger(__name__)
 
@@ -39,3 +40,7 @@ class RegisterTeamView(viewsets.GenericViewSet,
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class TeamListView(viewsets.ReadOnlyModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
