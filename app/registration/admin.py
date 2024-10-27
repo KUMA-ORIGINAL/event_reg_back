@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from registration.email import send_captain_emails
 from registration.models import Participant, TeamCaptain, Team
 
 
@@ -7,12 +8,10 @@ class ParticipantInline(admin.TabularInline):
     model = Participant
     extra = 1  # Позволяет добавлять участников прямо из интерфейса команды
     fields = ('full_name', 'email', 'role', 'age')
-    readonly_fields = ('email',)  # Поле email только для чтения
 
 class TeamCaptainInline(admin.StackedInline):
     model = TeamCaptain
     fields = ('full_name', 'email', 'phone_number', 'role', 'age')
-    readonly_fields = ('email',)
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
@@ -38,3 +37,10 @@ class TeamCaptainAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'email', 'phone_number', 'role', 'age', 'team')  # Отображение капитанов
     search_fields = ('full_name', 'email', 'phone_number')  # Поля для поиска капитанов
     list_filter = ('role', 'team')  # Фильтр по роли и команде
+    actions = ['send_email_to_captains']
+
+    def send_email_to_captains(self, request, queryset):
+        send_captain_emails(queryset)
+        self.message_user(request, 'Письма успешно отправлены капитанам команд.')
+
+    send_email_to_captains.short_description = 'Отправить email капитанам'

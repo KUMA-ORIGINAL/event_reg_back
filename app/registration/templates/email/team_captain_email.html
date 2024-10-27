@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackathon Invitation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e7f4e4;
+    }
+    .container {
+        width: 100%;
+        background-color: #e7f4e4;
+        padding: 20px;
+    }
+    .email-content {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+        background-color: #60b347;
+        color: #ffffff;
+        padding: 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        text-align: center;
+    }
+    .header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .content {
+        padding: 20px;
+    }
+    .content h2 {
+        color: #333333;
+        font-size: 20px;
+        margin: 0 0 10px;
+    }
+    .content p {
+        color: #555555;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .map-link {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .map-link img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+    .cta-button {
+        background-color: #60b347;
+        color: #ffffff;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 20px 0;
+    }
+    .footer {
+        background-color: #f4f4f4;
+        padding: 15px;
+        text-align: center;
+        color: #888888;
+        font-size: 14px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="email-content">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Приглашение на Хакатон</h1>
+            <p>Город Будущего</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Добро пожаловать, {{ captain.full_name }}!</h2>
+            <p>Мы рады пригласить вашу команду принять участие в Хакатоне, посвященном улучшению городской среды и популяризации здорового образа жизни. Это уникальная возможность воплотить ваши идеи в жизнь и сделать город лучше!</p>
+
+            <p><strong>Регистрация участников:</strong> начнется в <strong>9:30 утра</strong></p>
+            <p><strong>Место проведения:</strong> Международный университет инновационных технологий <br>
+            <strong>Адрес:</strong> <a href="https://go.2gis.com/3lajq" style="color: #60b347; text-decoration: none;">Улица Исакеева, 34/1</a></p>
+
+
+
+            <!-- Call to Action -->
+            <div style="text-align: center;">
+                <a style="color:white" href="https://hackathon.makalabox.com/" class="cta-button">Подробнее о мероприятии</a>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>С нетерпением ждем вашей команды на Хакатоне! Вместе мы сделаем город лучше и здоровее!</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
